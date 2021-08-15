@@ -62,6 +62,8 @@ def main():
                 invoicedataraw = invoicefiledata.readlines()
                 indexarray = [i.strip() for i in invoicedataraw]
                 indexoffset = int(indexarray[0])
+        else:
+            indexoffset = 0
 
         request = ln.ListInvoiceRequest(
             pending_only=False,
@@ -118,12 +120,11 @@ def main():
 # Boilerplate for flagging current database index for reduce seek times in future TBD
     # Check for new Invoices
 
-        # Write all previous and current Invoices
-        # Open and read in previous index position
-        invoicefile = os.path.expanduser('lastinvoice.db')
-        if os.path.exists(invoicefile):
-            with open(invoicefile, 'w') as invoicefiledata:
-                invoicefiledata.write(str(invoice_database_index))
+    # Write all previous and current Invoices
+    # Open and read in previous index position
+    invoicefile = os.path.expanduser('lastinvoice.db')
+    with open(invoicefile, 'w') as invoicefiledata:
+        invoicefiledata.write(str(invoice_database_index))
 
 # End
 
