@@ -31,7 +31,7 @@ TLVS = ["7629171", "7629169", "133773310"]
 
 Set up a Cron Tab on the Blitz based on how often you want it to check. For every 5 minutes:
 
-*/5 * * * * "/home/admin/extractlv/main.py" > /dev/null
+*/5 * * * * cd /home/admin/extractlv && /usr/bin/python /home/admin/extractlv/main.py
 
 PUSHOVER CUSTOMISATION
 
