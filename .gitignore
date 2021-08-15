@@ -132,3 +132,4 @@ dmypy.json
 lightning_pb2*
 lightning.proto
 /googleapis
+lastinvoice.db
