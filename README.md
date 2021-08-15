@@ -33,6 +33,12 @@ Set up a Cron Tab on the Blitz based on how often you want it to check. For ever
 
 */5 * * * * "/home/admin/extractlv/main.py" > /dev/null
 
+PUSHOVER CUSTOMISATION
+
+Add, modify, remove those fields you want to include in the PushOver notification per below:
+
+BOOSTAGRAM_FIELDS_TO_PUSH = ["app_name", "podcast", "episode", "message", "sender_name"]
+
 EXTENSABILITY
 
 The script is flexible and can extract either a matching TLV record Key-Pair or a matching TLV Key, irrespective of the Value. To extract a Boost-A-Gram it's simple:
@@ -44,6 +50,9 @@ Alternatively you could extract Action + Boost, or if you'd like, messages about
 TLVS_TO_EXTRACT = [["action", "boost"], ["podcast", "Analytical"]]
 
 
+WISH LIST
+-------
+* Summary EMail, with configurable frequency of Boost-A-Grams, as well as earning statistics
 
 
 
@@ -52,5 +61,5 @@ CHANGE LOG
 v.0.1
 -------
 * Initial Release
-* TBD
+* Supports one by one, push messaging for Boost-A-Grams via PushOver only
 
