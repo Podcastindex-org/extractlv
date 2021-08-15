@@ -17,6 +17,36 @@ curl -o lightning.proto -s https://raw.githubusercontent.com/lightningnetwork/ln
 python -m grpc_tools.protoc --proto_path=googleapis:. --python_out=. --grpc_python_out=. lightning.proto
 
 
+USAGE AND CONFIGURATION
+
+This simple script can be used in conjunction with the PushOver notification service to send a message once a Boost-A-Gram is received. Go to Pushover.Net and create an application for the Notifier, then add your PUSHOVER_USER_TOKEN and PUSHOVER_API_TOKEN to the Definitions section of the script.
+
+You can disable PUSHOVER_ENABLE by setting it to False if you want to. 
+
+This will send one push notification for every Boost-A-Gram received, and by default REMEMBER_LAST_INDEX should be True. This will save a file to the same directory 
+
+The script only looks for those TLV record IDs in the following array, but this can be updated easily as the specification changes:
+
+TLVS = ["7629171", "7629169", "133773310"]
+
+Set up a Cron Tab on the Blitz based on how often you want it to check. For every 5 minutes:
+
+*/5 * * * * "/home/admin/extractlv/main.py" > /dev/null
+
+EXTENSABILITY
+
+The script is flexible and can extract either a matching TLV record Key-Pair or a matching TLV Key, irrespective of the Value. To extract a Boost-A-Gram it's simple:
+
+TLVS_TO_EXTRACT = [["message", ""]]
+
+Alternatively you could extract Action + Boost, or if you'd like, messages about the Podcast by it's name (eg Analytical) like so:
+
+TLVS_TO_EXTRACT = [["action", "boost"], ["podcast", "Analytical"]]
+
+
+
+
+
 CHANGE LOG
 
 v.0.1
