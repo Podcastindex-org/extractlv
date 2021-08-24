@@ -7,8 +7,7 @@ Raspiblitz should already have installed:
 - grpcio (old version) Upgrade to latest:
     - pip3 install --upgrade grpcio
 - googleapis-common-protos (already installed)
-
-pip3 install grpcio-tools
+    - pip3 install grpcio-tools
 
 git clone https://github.com/googleapis/googleapis.git
 
