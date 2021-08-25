@@ -14,17 +14,17 @@ Ubuntu: (Steps tested on 19.04, should be similar on more recent releases)
 - Install pip3 if not already installed, install it from the default repo, but then upgrade pip and wheel to the latest versions immediately afterward:
 - - sudo apt install python3-pip
 - - sudo -H pip3 install --upgrade pip
-- - pip3 install --upgrade wheel
-- - pip3 install testresources setuptools
+- - sudo pip3 install --upgrade wheel
+- - sudo pip3 install testresources setuptools
 - Install the libraries needed for PIP to install the gRPC tools we need to use: 
 - - sudo apt-get install libnss3 libnss3-dev libcurl4-gnutls-dev librtmp-dev
 - Finally, you can install the tools themselves:
-- - pip3 install grpcio grpcio-tools googleapis-common-protos git curl pycurl
+- - sudo pip3 install grpcio grpcio-tools googleapis-common-protos pycurl
 
 On a Raspiblitz things are easier since most of the above tools have already been installed:
-- - pip3 install grpcio grpcio-tools googleapis-common-protos
+- - sudo pip3 install grpcio grpcio-tools googleapis-common-protos
 - Note: Upgrade to latest grpcio just in case:
-- - pip3 install --upgrade grpcio
+- - sudo pip3 install --upgrade grpcio
 - From your home directory on the blitz, clone two Git Repos, and download the proto file you need:
 - - git clone https://github.com/Podcastindex-org/extractlv
 - - cd extractlv
