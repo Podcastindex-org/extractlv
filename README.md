@@ -3,6 +3,19 @@ Tools for extracting TLV's from a lightning node and doing cool things with them
 
 INSTALLATION INSTRUCTIONS
 
+Tested on Python 3.7.3
+Refer: https://github.com/lightningnetwork/lnd/blob/master/docs/grpc/python.md
+
+Ubuntu:
+- Ensure python3 --version reports 3.7.3 or above
+- If you're using an OLD distro, you might need to grab the archived repos: 
+- - sudo sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+- - sudo apt-get update && sudo apt-get dist-upgrade
+- Install pip3 if not already installed:
+- - sudo apt install python3-pip
+- pip3 install grpcio grpcio-tools googleapis-common-protos
+- 
+
 Raspiblitz should already have installed:
 - grpcio (old version) Upgrade to latest:
     - pip3 install --upgrade grpcio
