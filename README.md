@@ -26,7 +26,7 @@ On a Raspiblitz things are easier since most of the above tools have already bee
 - Note: Upgrade to latest grpcio just in case:
 - - pip3 install --upgrade grpcio
 - From your home directory on the blitz, clone two Git Repos, and download the proto file you need:
-- - git clone https://github.com/daveajones/extractlv
+- - git clone https://github.com/Podcastindex-org/extractlv
 - - cd extractlv
 - - git clone https://github.com/googleapis/googleapis.git
 - - curl -o lightning.proto -s https://raw.githubusercontent.com/lightningnetwork/lnd/master/lnrpc/lightning.proto
