@@ -26,6 +26,7 @@ REMEMBER_LAST_INDEX = True
 BOOSTAGRAM_FIELDS_TO_PUSH = ["app_name", "podcast", "episode", "message", "sender_name"]
 
 # Pushover Notifications
+PUSHOVER_NOTIFICATION_TITLE = "Boost-a-gram!"
 PUSHOVER_ENABLE = True
 PUSHOVER_USER_TOKEN = "<TOKEN HERE>"
 PUSHOVER_API_TOKEN = "<TOKEN HERE>"
@@ -116,7 +117,7 @@ def main():
                                     crl = pycurl.Curl()
                                     crl.setopt(crl.URL, 'https://api.pushover.net/1/messages.json')
                                     crl.setopt(pycurl.HTTPHEADER, ['Content-Type: application/json' , 'Accept: application/json'])
-                                    data = json.dumps({"token": PUSHOVER_API_TOKEN, "user": PUSHOVER_USER_TOKEN, "title": "RSS Notifier", "message": pushover_message })
+                                    data = json.dumps({"token": PUSHOVER_API_TOKEN, "user": PUSHOVER_USER_TOKEN, "title": PUSHOVER_NOTIFICATION_TITLE, "message": pushover_message })
                                     crl.setopt(pycurl.POST, 1)
                                     crl.setopt(pycurl.POSTFIELDS, data)
                                     crl.perform()
