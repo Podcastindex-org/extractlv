@@ -30,6 +30,14 @@ PUSHOVER_ENABLE = True
 PUSHOVER_USER_TOKEN = "<TOKEN HERE>"
 PUSHOVER_API_TOKEN = "<TOKEN HERE>"
 
+# Node Details
+#MACAROON_LOCATION = "~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon" # Local Raspiblitz
+#TLSCERT_LOCATION = "~/.lnd/tls.cert" # Local Raspiblitz
+#NODE_ADDRESS = "localhost" # Local Raspiblitz
+MACAROON_LOCATION = "~/Documents/admin.macaroon" # Any folder location
+TLSCERT_LOCATION = "~/Documents/tls.cert" # Any folder location
+NODE_ADDRESS = "mynode.duckdns.org" # Any node location
+
 def JSONtoString(JSONObject):
     message_string = 'Boost-A-Gram recieved, '
     for key, value in JSONObject.items():
@@ -44,14 +52,14 @@ def main():
     os.environ["GRPC_SSL_CIPHER_SUITES"] = 'HIGH+ECDSA'
 
     # Lnd admin macaroon is at ~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon on Linux
-    with open(os.path.expanduser('~/.lnd/data/chain/bitcoin/mainnet/admin.macaroon'), 'rb') as f:
+    with open(os.path.expanduser(MACAROON_LOCATION), 'rb') as f:
         macaroon_bytes = f.read()
         macaroon = codecs.encode(macaroon_bytes, 'hex')
 
     # Lnd cert is at ~/.lnd/tls.cert on Linux
-    cert = open(os.path.expanduser('~/.lnd/tls.cert'), 'rb').read()
+    cert = open(os.path.expanduser(TLSCERT_LOCATION), 'rb').read()
     creds = grpc.ssl_channel_credentials(cert)
-    channel = grpc.secure_channel('localhost:10009', creds)
+    channel = grpc.secure_channel(NODE_ADDRESS + ':10009', creds)
     stub = lnrpc.LightningStub(channel)
 
     if REMEMBER_LAST_INDEX:
