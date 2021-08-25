@@ -16,7 +16,8 @@ Ubuntu:
 - - sudo -H pip3 install --upgrade pip
 - - pip3 install testresources setuptools
 - - pip3 install --upgrade wheel
-- - pip3 install grpcio grpcio-tools googleapis-common-protos git curl
+- - sudo apt-get install libnss3 libnss3-dev libcurl4-gnutls-dev librtmp-dev
+- - pip3 install grpcio grpcio-tools googleapis-common-protos git curl pycurl
 
 Raspiblitz should already have installed:
 - grpcio (old version) Upgrade to latest:
