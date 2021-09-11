@@ -21,6 +21,7 @@ TLVS = ["7629171", "7629169", "133773310"]
 # TLVS_TO_EXTRACT = [["action", "boost"]]
 TLVS_TO_EXTRACT = [["message", ""]]
 DEFAULT_NUM_MAX_INVOICES = 10000
+MAX_MESSAGE_LENGTH = 7777777
 DEFAULT_INDEX_OFFSET = 0
 REMEMBER_LAST_INDEX = True
 BOOSTAGRAM_FIELDS_TO_PUSH = ["app_name", "podcast", "episode", "message", "sender_name"]
@@ -60,7 +61,10 @@ def main():
     # Lnd cert is at ~/.lnd/tls.cert on Linux
     cert = open(os.path.expanduser(TLSCERT_LOCATION), 'rb').read()
     creds = grpc.ssl_channel_credentials(cert)
-    channel = grpc.secure_channel(NODE_ADDRESS + ':10009', creds)
+    channel = grpc.secure_channel(NODE_ADDRESS + ':10009', creds, options=[
+        ('grpc.max_send_message_length', MAX_MESSAGE_LENGTH),
+        ('grpc.max_receive_message_length', MAX_MESSAGE_LENGTH),
+    ])
     stub = lnrpc.LightningStub(channel)
 
     if REMEMBER_LAST_INDEX:
