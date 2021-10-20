@@ -22,6 +22,7 @@ Ubuntu: (Steps tested on 19.04, should be similar on more recent releases)
 - - sudo pip3 install grpcio grpcio-tools googleapis-common-protos pycurl
 
 On a Raspiblitz things are easier since most of the above tools have already been installed:
+- - cd /home/admin
 - Note: Some other optional packages pre-install the LibCurl libraries, but to make sure you have them install them anyway:
 - - sudo apt install libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-nss-dev 
 - - export PYCURL_SSL_LIBRARY=nss
